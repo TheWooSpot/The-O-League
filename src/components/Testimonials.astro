@@ -1,0 +1,56 @@
+---
+const testimonials = [
+  {
+    quote: "The Opportunity Youth Center has been a second home for my daughter. The mentors have helped her build confidence and discover her passion for science.",
+    author: "Maria Rodriguez",
+    role: "Parent"
+  },
+  {
+    quote: "I've been coming to the center for three years, and it's changed my life. I've improved my grades, made great friends, and even got help applying to colleges.",
+    author: "Jamal Washington",
+    role: "High School Senior"
+  },
+  {
+    quote: "Volunteering at The Opportunity has been incredibly rewarding. Seeing the growth in these young people and knowing I played a small part in their journey is priceless.",
+    author: "Sarah Chen",
+    role: "Volunteer Mentor"
+  }
+];
+---
+
+<section class="py-20">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">What Our Community Says</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Hear from the youth, parents, and volunteers who make our community special.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {testimonials.map(testimonial => (
+        <div class="bg-dark-100/50 backdrop-blur-sm border border-gray-800 rounded-xl p-8 card-hover">
+          <div class="text-secondary-400 mb-4">
+            <i class="fas fa-quote-left text-3xl"></i>
+          </div>
+          <p class="text-gray-300 mb-6 italic">{testimonial.quote}</p>
+          <div class="flex items-center">
+            <div class="w-12 h-12 bg-gray-700 rounded-full mr-4"></div>
+            <div>
+              <h4 class="font-medium text-white">{testimonial.author}</h4>
+              <p class="text-gray-400 text-sm">{testimonial.role}</p>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+    
+    <div class="mt-16 text-center">
+      <div class="inline-flex items-center justify-center p-1 bg-dark-100/50 backdrop-blur-sm border border-gray-800 rounded-full">
+        <button class="w-3 h-3 rounded-full bg-secondary-500 mx-1"></button>
+        <button class="w-3 h-3 rounded-full bg-gray-700 mx-1"></button>
+        <button class="w-3 h-3 rounded-full bg-gray-700 mx-1"></button>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,90 @@
+---
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="bg-dark-200 border-t border-gray-800">
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div>
+        <a href="/" class="flex items-center space-x-2 mb-4">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-br from-secondary-500 to-primary-600 flex items-center justify-center">
+            <span class="text-white font-bold text-xl">O</span>
+          </div>
+          <span class="font-display font-bold text-xl text-white">The Opportunity</span>
+        </a>
+        <p class="text-gray-400 mb-4">
+          Empowering youth to discover their potential through enrichment programs, mentorship, and community support.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white transition-colors">
+            <i class="fab fa-youtube"></i>
+          </a>
+        </div>
+      </div>
+      
+      <div>
+        <h3 class="font-display font-semibold text-white mb-4">Quick Links</h3>
+        <ul class="space-y-2">
+          <li><a href="/" class="text-gray-400 hover:text-white transition-colors">Home</a></li>
+          <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About Us</a></li>
+          <li><a href="/programs" class="text-gray-400 hover:text-white transition-colors">Programs</a></li>
+          <li><a href="/membership" class="text-gray-400 hover:text-white transition-colors">Membership</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Donate</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-display font-semibold text-white mb-4">Programs</h3>
+        <ul class="space-y-2">
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Academic Support</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Arts & Creativity</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Athletics & Wellness</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Leadership</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition-colors">Mental Health</a></li>
+        </ul>
+      </div>
+      
+      <div>
+        <h3 class="font-display font-semibold text-white mb-4">Contact Us</h3>
+        <ul class="space-y-2 text-gray-400">
+          <li class="flex items-start">
+            <i class="fas fa-map-marker-alt mt-1 mr-3"></i>
+            <span>1234 NE Portland Ave<br>Portland, OR 97208</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-phone mr-3"></i>
+            <span>(503) 555-1234</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-envelope mr-3"></i>
+            <span>info@theopportunity.org</span>
+          </li>
+          <li class="flex items-center">
+            <i class="fas fa-clock mr-3"></i>
+            <span>Mon-Fri: 10am-8pm<br>Sat: 10am-5pm</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 text-sm mb-4 md:mb-0">
+        &copy; {currentYear} The Opportunity Youth Center. All rights reserved.
+      </p>
+      <div class="flex space-x-6">
+        <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Privacy Policy</a>
+        <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Terms of Service</a>
+        <a href="#" class="text-gray-500 hover:text-white text-sm transition-colors">Sitemap</a>
+      </div>
+    </div>
+  </div>
+</footer>

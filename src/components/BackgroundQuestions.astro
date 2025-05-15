@@ -1,0 +1,39 @@
+---
+const questions = [
+  "How do ethical frameworks shape AI development?",
+  "What role does empathy play in technological advancement?",
+  "Can AI truly understand human emotions?",
+  "How might diverse perspectives enhance problem-solving?",
+  "What is the relationship between knowledge and wisdom?",
+  "How do cultural backgrounds influence communication?",
+  "What makes a conversation meaningful?",
+  "How can we bridge divides through dialogue?",
+  "What is the value of opposing viewpoints?",
+  "How does language shape our understanding of reality?",
+  "What responsibilities come with technological power?",
+  "How can we ensure AI serves humanity's best interests?",
+  "What makes an idea worth discussing?",
+  "How do we balance innovation with ethical considerations?",
+  "What role does curiosity play in intellectual growth?"
+];
+
+// Randomly select 8 questions
+const shuffled = [...questions].sort(() => 0.5 - Math.random());
+const selectedQuestions = shuffled.slice(0, 8);
+---
+
+<div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+  {selectedQuestions.map((question, index) => (
+    <div 
+      class="absolute text-gray-700/10 font-display text-xl md:text-2xl lg:text-3xl whitespace-nowrap"
+      style={`
+        top: ${Math.random() * 100}vh; 
+        left: ${Math.random() * 100}vw;
+        transform: translate(-50%, -50%) rotate(${Math.random() * 20 - 10}deg);
+        opacity: ${0.1 + Math.random() * 0.2};
+      `}
+    >
+      {question}
+    </div>
+  ))}
+</div>

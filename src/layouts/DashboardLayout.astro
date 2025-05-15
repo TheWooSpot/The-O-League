@@ -1,0 +1,150 @@
+---
+import '../styles/global.css';
+
+const { title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title ? `${title} - Admin Dashboard` : 'Admin Dashboard'}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  </head>
+  <body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-white transition-colors duration-200">
+    <div class="flex h-screen overflow-hidden">
+      <!-- Sidebar -->
+      <aside id="sidebar" class="fixed z-20 h-full top-0 left-0 pt-16 flex lg:flex flex-shrink-0 flex-col w-64 transition-width duration-200 lg:ml-0 lg:w-64 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700">
+        <div class="relative flex-1 flex flex-col min-h-0 border-r border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 pt-0">
+          <div class="flex-1 flex flex-col pt-5 pb-4 overflow-y-auto">
+            <div class="flex-1 px-3 bg-white dark:bg-gray-800 divide-y space-y-1">
+              <ul class="space-y-2 pb-2">
+                <li>
+                  <a href="/" class="text-base text-gray-900 dark:text-white font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-tachometer-alt w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Dashboard</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/analytics" class="text-base text-gray-900 dark:text-white font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-chart-pie w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Analytics</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/users" class="text-base text-gray-900 dark:text-white font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-users w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Users</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/products" class="text-base text-gray-900 dark:text-white font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-box w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Products</span>
+                  </a>
+                </li>
+                <li>
+                  <a href="/settings" class="text-base text-gray-900 dark:text-white font-normal rounded-lg flex items-center p-2 hover:bg-gray-100 dark:hover:bg-gray-700 group">
+                    <i class="fas fa-cog w-6 h-6 text-gray-500 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white"></i>
+                    <span class="ml-3">Settings</span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </aside>
+
+      <div class="bg-gray-900 opacity-50 hidden fixed inset-0 z-10" id="sidebarBackdrop"></div>
+      
+      <div id="main-content" class="h-full w-full bg-gray-50 dark:bg-gray-900 relative overflow-y-auto lg:ml-64">
+        <header class="flex justify-between items-center py-4 px-6 bg-white dark:bg-gray-800 border-b border-gray-200 dark:border-gray-700">
+          <div class="flex items-center">
+            <button id="toggleSidebarMobile" aria-expanded="true" aria-controls="sidebar" class="lg:hidden mr-2 text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white cursor-pointer p-2 hover:bg-gray-100 dark:hover:bg-gray-700 focus:bg-gray-100 dark:focus:bg-gray-700 focus:ring-2 focus:ring-gray-100 dark:focus:ring-gray-700 rounded">
+              <i class="fas fa-bars"></i>
+            </button>
+            <div class="text-xl font-semibold text-gray-900 dark:text-white">Admin Dashboard</div>
+          </div>
+          <div class="flex items-center">
+            <button id="theme-toggle" class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5">
+              <i class="fas fa-sun" id="theme-toggle-light-icon"></i>
+              <i class="fas fa-moon hidden" id="theme-toggle-dark-icon"></i>
+            </button>
+            <div class="flex items-center ml-3">
+              <div>
+                <button type="button" class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false">
+                  <span class="sr-only">Open user menu</span>
+                  <img class="w-8 h-8 rounded-full" src="https://ui-avatars.com/api/?name=Admin+User" alt="user photo">
+                </button>
+              </div>
+            </div>
+          </div>
+        </header>
+        
+        <main class="p-4 md:p-6">
+          <slot />
+        </main>
+      </div>
+    </div>
+
+    <script>
+      // Toggle sidebar on mobile
+      const toggleSidebarMobile = document.getElementById('toggleSidebarMobile');
+      const sidebar = document.getElementById('sidebar');
+      const sidebarBackdrop = document.getElementById('sidebarBackdrop');
+      
+      if (toggleSidebarMobile) {
+        toggleSidebarMobile.addEventListener('click', () => {
+          sidebar.classList.toggle('hidden');
+          sidebarBackdrop.classList.toggle('hidden');
+        });
+      }
+      
+      if (sidebarBackdrop) {
+        sidebarBackdrop.addEventListener('click', () => {
+          sidebar.classList.add('hidden');
+          sidebarBackdrop.classList.add('hidden');
+        });
+      }
+
+      // Theme toggle functionality
+      const themeToggleBtn = document.getElementById('theme-toggle');
+      const themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+      const themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
+
+      // Set theme based on localStorage or system preference
+      if (localStorage.getItem('color-theme') === 'dark' || 
+          (!localStorage.getItem('color-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+        document.documentElement.classList.add('dark');
+        themeToggleLightIcon.classList.add('hidden');
+        themeToggleDarkIcon.classList.remove('hidden');
+      } else {
+        document.documentElement.classList.remove('dark');
+        themeToggleLightIcon.classList.remove('hidden');
+        themeToggleDarkIcon.classList.add('hidden');
+      }
+
+      // Toggle theme when button is clicked
+      if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', function() {
+          // Toggle icons
+          themeToggleDarkIcon.classList.toggle('hidden');
+          themeToggleLightIcon.classList.toggle('hidden');
+          
+          // Toggle dark class on html element
+          if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.setItem('color-theme', 'light');
+          } else {
+            document.documentElement.classList.add('dark');
+            localStorage.setItem('color-theme', 'dark');
+          }
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,229 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const plans = [
+  {
+    name: "Free Trial",
+    price: "Free",
+    period: "7 days",
+    features: [
+      "3 AI-guided discussions",
+      "Access to 10+ popular topics",
+      "Basic discussion summaries",
+      "No credit card required"
+    ],
+    cta: "Start Free Trial",
+    highlighted: false,
+    isTrial: true
+  },
+  {
+    name: "Basic",
+    price: "$9.99",
+    period: "monthly",
+    features: [
+      "10 AI-guided discussions per month",
+      "Access to 50+ discussion topics",
+      "Discussion summaries",
+      "Email support"
+    ],
+    cta: "Get Started",
+    highlighted: false
+  },
+  {
+    name: "Premium",
+    price: "$19.99",
+    period: "monthly",
+    features: [
+      "Unlimited AI-guided discussions",
+      "Access to all discussion topics",
+      "Discussion summaries and transcripts",
+      "Custom topic suggestions",
+      "Priority support"
+    ],
+    cta: "Join Premium",
+    highlighted: true
+  },
+  {
+    name: "Annual",
+    price: "$179.99",
+    period: "yearly",
+    features: [
+      "All Premium features",
+      "Save 25% compared to monthly",
+      "Early access to new features",
+      "Exclusive quarterly webinars"
+    ],
+    cta: "Save 25%",
+    highlighted: false
+  }
+];
+---
+
+<Layout title="Membership">
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto text-center mb-12">
+        <h1 class="text-4xl font-display font-bold mb-4">Choose Your Membership Plan</h1>
+        <p class="text-xl text-gray-300">
+          Join our community of curious minds and expand your perspective through AI-guided discussions.
+        </p>
+      </div>
+      
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {plans.map(plan => (
+          <div class={`bg-dark-100/80 backdrop-blur-md border ${plan.highlighted ? 'border-secondary-500' : 'border-gray-800'} rounded-xl p-6 ${plan.highlighted ? 'ring-2 ring-secondary-500 transform md:-translate-y-4' : ''}`}>
+            <div class="text-center mb-6">
+              <h3 class="text-2xl font-display font-bold mb-2">{plan.name}</h3>
+              <div class="flex items-center justify-center">
+                <span class="text-3xl font-bold">{plan.price}</span>
+                <span class="text-gray-400 ml-2">/{plan.period}</span>
+              </div>
+            </div>
+            
+            <ul class="space-y-3 mb-8">
+              {plan.features.map(feature => (
+                <li class="flex items-start">
+                  <svg class="h-6 w-6 text-secondary-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                  </svg>
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+            
+            <div class="text-center">
+              {plan.isTrial ? (
+                <a 
+                  href="#free-trial" 
+                  class="inline-block w-full py-3 px-6 rounded-lg font-medium bg-gradient-to-r from-primary-600 to-primary-500 text-white hover:opacity-90 transition-colors"
+                  onclick="document.getElementById('free-trial-modal').classList.remove('hidden')"
+                >
+                  {plan.cta}
+                </a>
+              ) : (
+                <a 
+                  href="/signup" 
+                  class={`inline-block w-full py-3 px-6 rounded-lg font-medium ${
+                    plan.highlighted 
+                      ? 'bg-gradient-to-r from-secondary-600 to-primary-600 text-white hover:opacity-90' 
+                      : 'bg-dark-200 text-white border border-gray-700 hover:bg-dark-300'
+                  } transition-colors`}
+                >
+                  {plan.cta}
+                </a>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+      
+      <!-- Free Trial Modal -->
+      <div id="free-trial-modal" class="fixed inset-0 bg-black/70 flex items-center justify-center z-50 hidden">
+        <div class="bg-dark-100 rounded-xl p-8 max-w-md w-full mx-4 relative">
+          <button 
+            onclick="document.getElementById('free-trial-modal').classList.add('hidden')"
+            class="absolute top-4 right-4 text-gray-400 hover:text-white"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
+          
+          <h3 class="text-2xl font-display font-bold mb-4">Start Your Free 7-Day Trial</h3>
+          <p class="text-gray-300 mb-6">Enter your email to begin your trial. No credit card required.</p>
+          
+          <form id="free-trial-form" class="space-y-4">
+            <div>
+              <label for="trial-email" class="block text-sm font-medium text-gray-300 mb-1">Email address</label>
+              <input 
+                type="email" 
+                id="trial-email" 
+                name="email" 
+                required 
+                class="w-full px-4 py-2 bg-dark-200 border border-gray-700 rounded-lg focus:ring-2 focus:ring-secondary-500 focus:border-transparent outline-none text-white"
+                placeholder="your@email.com"
+              />
+            </div>
+            
+            <button 
+              type="submit" 
+              class="w-full py-3 px-6 rounded-lg font-medium bg-gradient-to-r from-secondary-600 to-primary-600 text-white hover:opacity-90 transition-colors"
+            >
+              Start My Free Trial
+            </button>
+            
+            <p class="text-xs text-gray-400 text-center">
+              By signing up, you agree to our <a href="/terms" class="text-secondary-400 hover:underline">Terms of Service</a> and <a href="/privacy" class="text-secondary-400 hover:underline">Privacy Policy</a>.
+            </p>
+          </form>
+        </div>
+      </div>
+      
+      <div class="max-w-3xl mx-auto mt-16 bg-dark-200/80 backdrop-blur-md border border-gray-800 rounded-xl p-8">
+        <h2 class="text-2xl font-display font-bold mb-4 text-center">Frequently Asked Questions</h2>
+        
+        <div class="space-y-6">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">How does the free trial work?</h3>
+            <p class="text-gray-300">Our 7-day free trial gives you access to 3 AI-guided discussions with no credit card required. Simply enter your email to get started immediately.</p>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Can I cancel my subscription at any time?</h3>
+            <p class="text-gray-300">Yes, you can cancel your subscription at any time. Your access will continue until the end of your current billing period.</p>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-2">How do the AI-guided discussions work?</h3>
+            <p class="text-gray-300">Our platform pairs you with two AI hosts who present different viewpoints on your chosen topic. You participate in the conversation through text or voice interaction, creating a natural and engaging experience.</p>
+          </div>
+          
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Can I suggest new topics for discussion?</h3>
+            <p class="text-gray-300">Premium and Annual members can suggest custom topics for discussion. We regularly review these suggestions and add new topics to our library.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const freeTrialForm = document.getElementById('free-trial-form');
+    
+    if (freeTrialForm) {
+      freeTrialForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const email = document.getElementById('trial-email').value;
+        
+        // In a real implementation, you would send this to your backend
+        console.log('Starting free trial for:', email);
+        
+        // Simulate success and redirect to a sample discussion
+        setTimeout(() => {
+          window.location.href = '/dashboard';
+        }, 1000);
+      });
+    }
+    
+    // Add click handler for the free trial button
+    const trialButtons = document.querySelectorAll('a[href="#free-trial"]');
+    trialButtons.forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.preventDefault();
+        document.getElementById('free-trial-modal').classList.remove('hidden');
+      });
+    });
+    
+    // Close modal when clicking outside
+    const modal = document.getElementById('free-trial-modal');
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    }
+  });
+</script>

@@ -1,0 +1,75 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const topics = [
+  {
+    category: "Philosophy & Ethics",
+    items: [
+      "The Nature of Consciousness",
+      "Ethical Implications of AI",
+      "Free Will vs Determinism",
+      "Moral Relativism in a Global Society",
+      "The Trolley Problem and Utilitarianism"
+    ]
+  },
+  {
+    category: "Science & Technology",
+    items: [
+      "Climate Change Solutions",
+      "The Future of Space Exploration",
+      "Quantum Computing Applications",
+      "Biotechnology and Human Enhancement",
+      "Renewable Energy Transitions"
+    ]
+  },
+  {
+    category: "Society & Culture",
+    items: [
+      "Digital Privacy in the Modern Age",
+      "Social Media's Impact on Democracy",
+      "Universal Basic Income",
+      "The Future of Work and Automation",
+      "Cultural Appropriation vs Appreciation"
+    ]
+  },
+  {
+    category: "Art & Creativity",
+    items: [
+      "AI-Generated Art and Creativity",
+      "The Value of Art in Society",
+      "Evolution of Storytelling",
+      "Music and Emotional Intelligence",
+      "Architecture and Human Psychology"
+    ]
+  }
+];
+---
+
+<Layout title="Discussion Topics">
+  <section class="py-12">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <h1 class="text-4xl font-display font-bold mb-6">Choose a Discussion Topic</h1>
+        <p class="text-xl text-gray-300 mb-8">Select from our curated list of thought-provoking topics. Our AI hosts are already discussing these subjects and you can join the conversation at any time.</p>
+        
+        <div class="space-y-8">
+          {topics.map(category => (
+            <div class="bg-dark-100/80 backdrop-blur-md border border-gray-800 rounded-xl p-6">
+              <h2 class="text-2xl font-display font-semibold mb-4">{category.category}</h2>
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {category.items.map(item => (
+                  <a href={`/conversation?topic=${encodeURIComponent(item)}`} class="bg-dark-200 hover:bg-dark-300 border border-gray-700 hover:border-secondary-500 rounded-lg p-4 transition-all duration-200 flex items-center justify-between group">
+                    <span class="font-medium text-lg">{item}</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary-400 group-hover:text-secondary-300 transition-colors" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                    </svg>
+                  </a>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

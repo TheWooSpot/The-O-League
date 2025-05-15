@@ -1,0 +1,144 @@
+---
+---
+
+<header class="header">
+  <div class="container">
+    <div class="header-content">
+      <div class="logo">
+        <a href="/">
+          <h1 class="logo-text">THE OPPORTUNITY LEAGUE</h1>
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="nav-list">
+          <li><a href="/">Home</a></li>
+          <li><a href="/programs">Programs</a></li>
+          <li><a href="/about">About</a></li>
+          <li><a href="/events">Events</a></li>
+          <li><a href="/contact">Contact</a></li>
+          <li><a href="/login" class="login-link"><i class="fas fa-user-circle"></i> Member Login</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="/donate" class="btn btn-secondary">Donate</a>
+        <button class="mobile-menu-toggle" aria-label="Toggle Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<style>
+  .header {
+    background-color: #1a1a1a;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 0;
+  }
+
+  .logo-text {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    margin: 0;
+    letter-spacing: 1px;
+  }
+
+  .nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2rem;
+  }
+
+  .nav-list a {
+    color: var(--text-light);
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    position: relative;
+  }
+
+  .nav-list a:hover {
+    color: var(--secondary);
+  }
+
+  .nav-list a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--secondary);
+    transition: width 0.3s ease;
+  }
+
+  .nav-list a:hover::after {
+    width: 100%;
+  }
+
+  .login-link {
+    color: var(--accent2) !important;
+    font-weight: 700;
+  }
+
+  .login-link:hover {
+    color: var(--secondary) !important;
+  }
+
+  .login-link::after {
+    background-color: var(--accent2);
+  }
+
+  .login-link:hover::after {
+    background-color: var(--secondary);
+  }
+
+  .header-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .mobile-menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: var(--text-light);
+    cursor: pointer;
+  }
+
+  @media (max-width: 992px) {
+    .nav-list {
+      gap: 1.5rem;
+    }
+    
+    .logo-text {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .main-nav {
+      display: none;
+    }
+
+    .mobile-menu-toggle {
+      display: block;
+    }
+    
+    .logo-text {
+      font-size: 1rem;
+    }
+  }
+</style>

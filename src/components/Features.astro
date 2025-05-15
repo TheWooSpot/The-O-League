@@ -1,0 +1,55 @@
+---
+const features = [
+  {
+    title: "AI-Guided Discussions",
+    description: "Engage with two AI hosts who present different perspectives on complex topics, creating a balanced and thought-provoking conversation.",
+    icon: "💬"
+  },
+  {
+    title: "Voice Interaction",
+    description: "Participate in natural voice conversations that feel like speaking with knowledgeable colleagues rather than interacting with technology.",
+    icon: "🎙️"
+  },
+  {
+    title: "Diverse Topics",
+    description: "Explore a wide range of subjects from philosophy and science to culture and current events, all curated to expand your knowledge.",
+    icon: "🌐"
+  },
+  {
+    title: "Personalized Experience",
+    description: "Receive summaries and transcripts of your discussions, allowing you to review insights and track your intellectual journey.",
+    icon: "📝"
+  },
+  {
+    title: "Respectful Environment",
+    description: "Our AI hosts maintain decorum and ensure all perspectives are treated with respect, creating a safe space for exploration.",
+    icon: "🤝"
+  },
+  {
+    title: "Knowledge Expansion",
+    description: "Discover new ideas, challenge your assumptions, and develop a more nuanced understanding of complex issues.",
+    icon: "🧠"
+  }
+];
+---
+
+<section class="py-16 bg-dark-200/50">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-display font-bold mb-4">Why Join Our Discussions?</h2>
+      <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+        Our platform offers a unique way to engage with ideas and expand your thinking through guided conversations.
+      </p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {features.map(feature => (
+        <div class="bg-dark-100/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 card-hover">
+          <div class="text-4xl mb-4">{feature.icon}</div>
+          <h3 class="text-xl font-display font-semibold mb-3">{feature.title}</h3>
+          <p class="text-gray-400">{feature.description}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

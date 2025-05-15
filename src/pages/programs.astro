@@ -1,0 +1,297 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Navbar from '../components/Navbar.astro';
+import Footer from '../components/Footer.astro';
+import CallToAction from '../components/CallToAction.astro';
+
+const programs = [
+  {
+    category: "Academic Excellence",
+    icon: "🎓",
+    color: "from-blue-500 to-cyan-500",
+    programs: [
+      {
+        title: "Homework Heroes",
+        description: "After-school homework help and tutoring for students in grades K-12, with certified teachers and trained volunteers providing support in all subject areas.",
+        ages: "Ages 5-18",
+        schedule: "Mon-Thu, 3:00 PM - 6:00 PM"
+      },
+      {
+        title: "College Bound",
+        description: "Comprehensive college preparation program including SAT/ACT prep, college application assistance, scholarship guidance, and campus visits.",
+        ages: "Ages 14-18",
+        schedule: "Tue & Thu, 5:00 PM - 7:00 PM"
+      },
+      {
+        title: "Math Minds",
+        description: "Specialized math enrichment program that makes mathematics engaging and accessible through games, puzzles, and real-world applications.",
+        ages: "Ages 8-14",
+        schedule: "Wed, 4:00 PM - 5:30 PM"
+      },
+      {
+        title: "Literacy Leaders",
+        description: "Reading and writing program designed to build strong literacy skills through book clubs, creative writing workshops, and storytelling activities.",
+        ages: "Ages 6-12",
+        schedule: "Mon & Fri, 4:00 PM - 5:30 PM"
+      }
+    ]
+  },
+  {
+    category: "Arts & Creativity",
+    icon: "🎨",
+    color: "from-purple-500 to-pink-500",
+    programs: [
+      {
+        title: "Visual Arts Studio",
+        description: "Hands-on art classes exploring various mediums including drawing, painting, sculpture, and mixed media, culminating in a youth art exhibition.",
+        ages: "Ages 8-18",
+        schedule: "Tue & Sat, Various Times"
+      },
+      {
+        title: "Music Makers",
+        description: "Music education program offering instrument lessons, vocal training, music theory, and opportunities to perform in ensembles and community events.",
+        ages: "Ages 10-18",
+        schedule: "Mon & Wed, Various Times"
+      },
+      {
+        title: "Digital Media Lab",
+        description: "Creative technology program teaching photography, video production, graphic design, and digital storytelling using industry-standard software.",
+        ages: "Ages 12-18",
+        schedule: "Thu, 4:00 PM - 6:00 PM"
+      },
+      {
+        title: "Theater Workshop",
+        description: "Drama program developing performance skills, confidence, and creative expression through improvisation, scene work, and full productions.",
+        ages: "Ages 8-18",
+        schedule: "Sat, 10:00 AM - 12:00 PM"
+      }
+    ]
+  },
+  {
+    category: "Athletics & Wellness",
+    icon: "🏀",
+    color: "from-green-500 to-emerald-500",
+    programs: [
+      {
+        title: "Team Sports",
+        description: "Recreational and competitive sports leagues including basketball, soccer, volleyball, and flag football, emphasizing teamwork and sportsmanship.",
+        ages: "Ages 8-18",
+        schedule: "Various Days & Times"
+      },
+      {
+        title: "Fitness Fun",
+        description: "Engaging fitness classes including dance fitness, yoga, strength training, and circuit workouts designed specifically for youth.",
+        ages: "Ages 10-18",
+        schedule: "Mon, Wed, Fri, 4:30 PM - 5:30 PM"
+      },
+      {
+        title: "Outdoor Explorers",
+        description: "Adventure program featuring hiking, camping, rock climbing, and environmental education in Portland's beautiful natural areas.",
+        ages: "Ages 12-18",
+        schedule: "Monthly Outings"
+      },
+      {
+        title: "Nutrition Navigators",
+        description: "Hands-on cooking classes and nutrition education teaching healthy eating habits, meal planning, and food preparation skills.",
+        ages: "Ages 8-18",
+        schedule: "Tue, 4:00 PM - 5:30 PM"
+      }
+    ]
+  },
+  {
+    category: "Science & Innovation",
+    icon: "🔬",
+    color: "from-amber-500 to-orange-500",
+    programs: [
+      {
+        title: "Coding Club",
+        description: "Introduction to computer programming through interactive projects, game development, and web design using kid-friendly coding platforms.",
+        ages: "Ages 10-18",
+        schedule: "Wed, 4:00 PM - 5:30 PM"
+      },
+      {
+        title: "Robotics Team",
+        description: "Hands-on robotics program where participants design, build, and program robots to complete challenges and compete in regional competitions.",
+        ages: "Ages 12-18",
+        schedule: "Thu, 4:30 PM - 6:30 PM"
+      },
+      {
+        title: "Science Explorers",
+        description: "Inquiry-based science program featuring experiments, demonstrations, and projects across various scientific disciplines.",
+        ages: "Ages 8-14",
+        schedule: "Tue, 4:00 PM - 5:30 PM"
+      },
+      {
+        title: "Environmental Stewards",
+        description: "Ecology and conservation program focused on environmental science, sustainability practices, and community-based environmental projects.",
+        ages: "Ages 10-18",
+        schedule: "Fri, 4:00 PM - 5:30 PM"
+      }
+    ]
+  },
+  {
+    category: "Leadership & Service",
+    icon: "🌱",
+    color: "from-red-500 to-rose-500",
+    programs: [
+      {
+        title: "Youth Council",
+        description: "Leadership development program where youth representatives provide input on center programs, organize events, and develop leadership skills.",
+        ages: "Ages 14-18",
+        schedule: "Bi-weekly Meetings"
+      },
+      {
+        title: "Community Action",
+        description: "Service learning program engaging youth in meaningful volunteer opportunities and community improvement projects throughout Portland.",
+        ages: "Ages 12-18",
+        schedule: "Monthly Service Projects"
+      },
+      {
+        title: "Peer Mentors",
+        description: "Mentorship program training older youth to provide guidance and support to younger participants in various center programs.",
+        ages: "Ages 15-18",
+        schedule: "Training + Weekly Mentoring"
+      },
+      {
+        title: "Entrepreneurship Lab",
+        description: "Business education program teaching entrepreneurial skills through developing and implementing youth-led business ideas and social enterprises.",
+        ages: "Ages 14-18",
+        schedule: "Thu, 5:00 PM - 6:30 PM"
+      }
+    ]
+  },
+  {
+    category: "Mental Health & Wellbeing",
+    icon: "🧠",
+    color: "from-indigo-500 to-violet-500",
+    programs: [
+      {
+        title: "Mindfulness Matters",
+        description: "Stress management program teaching mindfulness techniques, meditation, and emotional regulation skills to promote mental wellbeing.",
+        ages: "Ages 10-18",
+        schedule: "Mon, 4:00 PM - 5:00 PM"
+      },
+      {
+        title: "Teen Talk",
+        description: "Facilitated discussion groups providing a safe space for teens to discuss challenges, share experiences, and build supportive peer relationships.",
+        ages: "Ages 13-18",
+        schedule: "Wed, 5:00 PM - 6:30 PM"
+      },
+      {
+        title: "Art Therapy",
+        description: "Expressive arts program using creative activities as a therapeutic tool for emotional expression, stress relief, and personal growth.",
+        ages: "Ages 8-18",
+        schedule: "Tue, 4:30 PM - 6:00 PM"
+      },
+      {
+        title: "Family Connections",
+        description: "Family support program offering parent workshops, family counseling, and resources to strengthen family relationships and communication.",
+        ages: "All Ages",
+        schedule: "Monthly Workshops"
+      }
+    ]
+  }
+];
+---
+
+<Layout title="Programs">
+  <Navbar />
+  <main>
+    <section class="py-20 relative">
+      <div class="absolute inset-0 bg-gradient-to-b from-secondary-900/30 to-transparent z-0"></div>
+      
+      <div class="container mx-auto px-4 relative z-10">
+        <div class="max-w-3xl mx-auto text-center">
+          <h1 class="text-4xl md:text-5xl lg:text-6xl font-display font-bold mb-6 leading-tight">
+            Our <span class="text-gradient">Programs</span>
+          </h1>
+          
+          <p class="text-xl text-gray-300 mb-8">
+            Comprehensive enrichment opportunities designed to support the whole child and foster growth in multiple areas.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    {programs.map((category) => (
+      <section class="py-16" id={category.category.toLowerCase().replace(/\s+/g, '-')}>
+        <div class="container mx-auto px-4">
+          <div class="flex items-center space-x-4 mb-12">
+            <div class={`w-12 h-12 rounded-xl bg-gradient-to-br ${category.color} flex items-center justify-center text-2xl`}>
+              {category.icon}
+            </div>
+            <h2 class="text-3xl font-display font-bold">{category.category}</h2>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {category.programs.map((program) => (
+              <div class="bg-dark-100/50 backdrop-blur-sm border border-gray-800 rounded-xl p-6 card-hover">
+                <h3 class="text-xl font-display font-semibold mb-3">{program.title}</h3>
+                <p class="text-gray-300 mb-4">{program.description}</p>
+                <div class="flex flex-wrap gap-4 mt-auto">
+                  <div class="bg-dark-200 rounded-lg px-3 py-1 text-sm text-gray-300">
+                    {program.ages}
+                  </div>
+                  <div class="bg-dark-200 rounded-lg px-3 py-1 text-sm text-gray-300">
+                    {program.schedule}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    ))}
+    
+    <section class="py-16 bg-dark-200/50">
+      <div class="container mx-auto px-4">
+        <div class="max-w-3xl mx-auto">
+          <div class="bg-dark-100/50 backdrop-blur-sm border border-gray-800 rounded-xl p-8">
+            <h2 class="text-2xl font-display font-bold mb-4">Program Registration</h2>
+            <p class="text-gray-300 mb-6">
+              Ready to join one of our programs? Registration is easy! Choose from the options below:
+            </p>
+            
+            <div class="space-y-4 mb-6">
+              <div class="flex items-start space-x-3">
+                <i class="fas fa-check-circle text-primary-500 mt-1"></i>
+                <div>
+                  <h3 class="font-semibold text-white">Online Registration</h3>
+                  <p class="text-gray-400">Create an account and register through our member portal.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-3">
+                <i class="fas fa-check-circle text-primary-500 mt-1"></i>
+                <div>
+                  <h3 class="font-semibold text-white">In-Person Registration</h3>
+                  <p class="text-gray-400">Visit our center during business hours to register with our staff.</p>
+                </div>
+              </div>
+              
+              <div class="flex items-start space-x-3">
+                <i class="fas fa-check-circle text-primary-500 mt-1"></i>
+                <div>
+                  <h3 class="font-semibold text-white">Phone Registration</h3>
+                  <p class="text-gray-400">Call (503) 555-0123 to register over the phone.</p>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="/membership" class="px-6 py-3 bg-gradient-to-r from-secondary-600 to-primary-600 rounded-lg font-medium text-white hover:opacity-90 transition-opacity shadow-lg text-center">
+                Register Now
+              </a>
+              <a href="#" class="px-6 py-3 bg-transparent border border-white rounded-lg font-medium text-white hover:bg-white/10 transition-colors text-center">
+                Download Program Guide
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <CallToAction />
+  </main>
+  <Footer />
+</Layout>

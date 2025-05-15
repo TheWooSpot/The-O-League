@@ -1,0 +1,38 @@
+---
+---
+
+<div id="mobile-menu" class="md:hidden bg-dark-200 fixed inset-0 z-50 transform translate-x-full transition-transform duration-300 ease-in-out">
+  <div class="flex justify-end p-4">
+    <button id="close-menu-button" class="text-white">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+    </button>
+  </div>
+  
+  <nav class="p-4">
+    <ul class="space-y-4">
+      <li><a href="/" class="text-white text-xl block py-2">Home</a></li>
+      <li><a href="/about" class="text-white text-xl block py-2">About</a></li>
+      <li><a href="/programs" class="text-white text-xl block py-2">Programs</a></li>
+      <li><a href="/membership" class="text-white text-xl block py-2">Membership</a></li>
+      <li><a href="/login" class="text-white text-xl block py-2">Sign In</a></li>
+    </ul>
+  </nav>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const closeMenuButton = document.getElementById('close-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    
+    mobileMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.remove('translate-x-full');
+    });
+    
+    closeMenuButton?.addEventListener('click', () => {
+      mobileMenu?.classList.add('translate-x-full');
+    });
+  });
+</script>

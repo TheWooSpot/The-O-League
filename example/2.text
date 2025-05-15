@@ -1,0 +1,11 @@
+/
+âââ public/
+â   âââ favicon.svg
+âââ src/
+â   âââ components/
+â   â   âââ Card.astro
+â   âââ layouts/
+â   â   âââ Layout.astro
+â   âââ pages/
+â       âââ index.astro
+âââ package.json
